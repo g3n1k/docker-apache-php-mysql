@@ -1,0 +1,30 @@
+version: '3'
+services:
+  php-apache:
+    build:
+      context: ./apache-php
+    ports:
+      - 8080:80
+    volumes:
+      - ./website:/var/www/html
+      - ./logs/apache2:/var/log/apache2
+    links:
+      - mariadb
+
+  mariadb:
+    image: mariadb
+    volumes:
+      - ./database:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      TZ: "Asia/Jakarta"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_ROOT_PASSWORD: "rootpwd"
+      MYSQL_USER: 'userdb'
+      MYSQL_PASSWORD: 'passworddb'
+      MYSQL_DATABASE: 'testdb'
+
+#  volumes:
+#    mariadb:
+

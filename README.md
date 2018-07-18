@@ -1,2 +1,2 @@
 # docker-apache-php-mysql
-docker configuration daily dev for php myql apache
+docker configuration daily dev for php mysql/mariadb apache
